@@ -1,0 +1,38 @@
+<div class="table-container">
+    
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+        <button mat-raised-button color="primary" (click)="onEdit()">
+            <mat-icon>edit</mat-icon> Edit
+        </button>
+        <button mat-raised-button color="accent" (click)="onSubmit()" [disabled]="!isEditing">
+            <mat-icon>save</mat-icon> Submit
+        </button>
+    </div>
+
+    <!-- Table Container -->
+    <div class="scrollable-container mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+
+            <!-- Time Period Column -->
+            <ng-container matColumnDef="timePeriod" sticky>
+                <th mat-header-cell *matHeaderCellDef> Time Period </th>
+                <td mat-cell *matCellDef="let element">{{element.timePeriod}}</td>
+            </ng-container>
+            
+            <!-- Columns for Days -->
+            <ng-container *ngFor="let day of days" [matColumnDef]="day">
+                <th mat-header-cell *matHeaderCellDef>{{day}}</th>
+                <td mat-cell *matCellDef="let element">
+                    <input *ngIf="isEditing" [(ngModel)]="element[day]" class="day-input">
+                    <span *ngIf="!isEditing">{{element[day]}}</span>
+                </td>
+            </ng-container>
+
+            <!-- Header & Row Definitions -->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="data-row"></tr>
+
+        </table>
+    </div>
+</div>

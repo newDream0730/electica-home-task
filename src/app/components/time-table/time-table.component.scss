@@ -1,0 +1,46 @@
+/* Table Container Styles */
+.table-container {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+/* Scrollable Container Styles */
+.scrollable-container {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 84px); // considering the height of buttons and some additional margin
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+/* Action Buttons Styles */
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+
+    button {
+        margin-left: 8px;
+    }
+}
+
+/* Day Input Styles */
+.day-input {
+    width: 50px;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.2s;
+
+    &:focus {
+        border-color: #1976d2; // focusing color
+    }
+}
+
+/* Table Cells & Header Styles */
+th, td {
+    min-width: 120px;
+}
